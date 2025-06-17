@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Basico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header>SQL Básico</header>
+        <ul>
+            <li><a href="#SQL_para_iniciantes:_Seus_Primeiros_Passos_no_Mundo_dos_Dados" class="nav-link">SQL para iniciantes: Seus Primeiros Passos no Mundo dos Dados</a></li>
+            <li><a href="#O_Que_Você_Já_Deveria_Saber" class="nav-link">O Que Você Já Deveria Saber</a></li>
+            <li><a href="#O_que_é_SQL?" class="nav-link">O que é SQL?</a></li>
+            <li><a href="#Banco_de_Dados_Relacionais:_Onde_os_Dados_Vivem" class="nav-link">Banco de Dados Relacionais: Onde os Dados Vivem</a></li>
+            <li><a href="#Os_Comandos_SQL_Básicos(CRUD)" class="nav-link">Os Comandos SQL Básicos(CRUD)</a></li>
+            <li><a href="#SELECT:_A_Arte_de_Consultar_Dados" class="nav-link">SELECT: A Arte de Consultar Dados</a></li>
+            <li><a href="#Filtrando_Dados_Com_WHERE" class="nav-link">Filtrando Dados com WHERE</a></li>
+            <li><a href="#Ordenando_Resultados_com_ORDER_BY" class="nav-link">Ordenando Resultados com ORDER BY</a></li>
+            <li><a href="#Limitando_Resultados_com_LIMIT" class="nav-link">Limitando Resultados com LIMIT</a></li>
+            <li><a href="#INSERT:_Adicionando_Novidades_ao_Banco" class="nav-link">INSERT: Adicionando Novidades ao Banco</a></li>
+            <li><a href="#UPDATE:_A_Reforma_dos_Dados" class="nav-link">UPDATE: A Reforma dos Dados</a></li>
+            <li><a href="#DELETE:_Removendo_Dados" class="nav-link">DELETE: Removendo Dados</a></li>
+            <li><a href="#Considerações_Finais_e_Boas_Práticas" class="nav-link">Considerações Finais e Boas Práticas</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+    <section class="main-section" id="SQL_para_iniciantes:_Seus_Primeiros_Passos_no_Mundo_dos_Dados">
+        <header>SQL para iniciantes: Seus Primeiros Passos no Mundo dos Dados</header>
+        <article>
+            <p>Seja bem_vindo ao universo do SQL! Se você está começando no desenvolvimento de software, análise de dados ou simplesmente curioso sobre como a informação é organizada e acessada em grandes sistemas, você chegou ao lugar certo. SQL é a linguagem que permite conversar com bancos de dados, e entendê_la é uma habilidade fundamental no mundo digital de hoje. Prepare_se para desmistificar os dados!</p>
+        </article>
+    </section>
+    <section class="main-section" id="O_Que_Você_Já_Deveria_Saber">
+        <header>O Que Você Já Deveria Saber</header>
+        <article>
+            <p>Antes de mergulhar fundo no SQL, ter uma compreensão básica de alguns conceitos pode facilitar muito seu aprendizado. Não se preocupe se não souber tudo, mas um contato prévio com estes tópicos será um diferencial:</p>
+            <ul>
+                <li><strong>Lógica de Programação:</strong> Entender conceitos como variáveis, tipos de dados, condições (if/else) e laços de repetição (loops) ajuda a compreender como as consultas SQL filtram e manipulam dados de forma lógica.</li>
+                <li><strong>Pensamento Estruturado:</strong> SQL lida com dados organizados em tabelas. Uma mente que aprecie a organização e a estrutura de informações terá facilidade em visualizar como os dados se relacionam.</li>
+                <li><strong>Conceitos Básicos de Computação:</strong> Saber o que é um arquivo, uma pasta, e como programas interagem com o sistema operacional, pode dar uma base para entender onde os bancos de dados "vivem".</li></ul>
+        </article>
+    </section>
+    <section class="main-section" id="O_que_é_SQL?">
+        <header>O que é SQL?</header>
+        <article>
+            <p>SQL, que significa Structured Query Language (Linguagem de Consulta Estruturada), é a linguagem padrão utilizada para gerenciar e manipular bancos de dados relacionais. Pense nela como a ponte de comunicação entre você (ou seu aplicativo) e a vasta quantidade de informações armazenadas. Com SQL, você pode:</p>
+            <ul>
+                <li><strong>Consultar:</strong> Fazer perguntas aos dados para obter informações específicas.</li>
+                <li><strong>Inserir:</strong> Adicionar novos registros (novas linhas de informação).</li>
+                <li><strong>Atualizar:</strong> Modificar dados existentes.</li>
+                <li><strong>Excluir:</strong> Remover dados que não são mais necessários.</li>
+                <li><strong>Criar e Modificar Estruturas:</strong> Definir como os dados são organizados, criando tabelas, índices e relacionamentos.</li>
+            </ul>
+        </article>
+    </section>
+    <section class="main-section" id="Banco_de_Dados_Relacionais:_Onde_os_Dados_Vivem">
+        <header>Banco de Dados Relacionais: Onde os Dados Vivem</header>
+        <article>
+            <p>Para entender SQL, é crucial entender os Bancos de Dados Relacionais (SGBDRs _ Sistemas Gerenciadores de Banco de Dados Relacionais). Eles são softwares que armazenam e organizam os dados de uma forma estruturada, permitindo que sejam facilmente acessados e gerenciados.</p>
+            <ul>
+                <li>Tabelas: A unidade fundamental de um banco de dados relacional é a tabela. Pense em uma tabela como uma planilha de Excel, composta por:</li>
+                    <ul>
+                    <li>Colunas (Campos/Atributos): Representam os tipos de informação que você quer guardar (ex: Nome, Idade, Email). Cada coluna tem um nome e um tipo de dado específico (texto, número, data, etc.).</li>
+                    <li>Linhas (Registros/Tuplas): Representam uma única entrada ou item de dados (ex: uma pessoa específica, um produto). Cada linha contém valores para cada uma das colunas.</li></ul>
+                <li>Relacionamentos: O termo "relacional" significa que as tabelas podem ser ligadas umas às outras através de colunas em comum, permitindo que você combine dados de diferentes tabelas para obter uma visão mais completa. Por exemplo, uma tabela de "Pedidos" pode se relacionar com uma tabela de "Clientes".</li>
+            </ul>
+            <h3>Exemplo de Tabela: Livros</h3>
+            <p>Para nossos exemplos futuros, vamos considerar uma tabela simples chamada Livros</p>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <th>AUTOR</th>
+                    <th>ANO_PUBLICACAO</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>A Odisséia</td>
+                    <td>Homero</td>
+                    <td>_1000</td>
+                </tr>
+                 <tr>
+                    <td>2</td>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td>1949</td>
+                </tr>
+                 <tr>
+                    <td>3</td>
+                    <td>O Prqueno Príncipe</td>
+                    <td>Antoine de Saint_Exupéry</td>
+                    <td>1943</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <section class="main-section" id="Os_Comandos_SQL_Básicos(CRUD)">
+        <header>Os Comandos SQL Básicos(CRUD)</header>
+        <article>
+            <p>Os quatro comandos a seguir formam a base de qualquer interação com dados em um banco: Create (Inserir), Read (Selecionar), Update (Atualizar) e Delete (Deletar), frequentemente referidos como CRUD.</p>
+            <ul>
+                <li>SELECT (Ler): Para buscar e recuperar dados do banco.</li>
+                <li>INSERT INTO (Criar/Inserir): Para adicionar novas linhas (registros) a uma tabela.</li>
+                <li>UPDATE (Atualizar): Para modificar dados existentes em uma ou mais linhas.</li>
+                <li>DELETE FROM (Deletar): Para remover linhas (registros) de uma tabela.</li>
+            </ul>
+            <p>Próximos passos: Nas próximas seções, exploraremos cada um desses comandos em detalhes, com exemplos práticos usando nossa tabela Livros.</p>
+        </article>
+    </section>
+    <section class="main-section" id="SELECT:_A_Arte_de_Consultar_Dados">
+        <header>SELECT: A Arte de Consultar Dados</header>
+        <article>
+            <p>O comando SELECT é, sem dúvida, o mais utilizado em SQL. Ele permite que você "pergunte" ao banco de dados quais informações você precisa e receba os resultados.</p>
+            <h4>Sintaxe Basica</h4>
+            Para selecionar colunas específicas de uma tabela: <code>SELECT coluna1, coluna2 FROM NomeDaTabela;</code>
+            <h4>Exemplo Prático (Selecionando todos os livros):</h4>
+            <code>SELECT * FROM Livros;</code>
+            <h4>Resultado</h4>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>titulo</th>
+                    <th>autor</th>
+                    <th>ano_publicacao</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>A Odisséia</td>
+                    <td>Homero</td>
+                    <td>_1000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td>1949</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>O Pequeno Principe</td>
+                    <td>Antoine de Saint_Exupéry</td>
+                    <td>1943</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Dom Casmurro</td>
+                    <td>Machado de Assis</td>
+                    <td>1899</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <section class="main-section" id="Filtrando_Dados_Com_WHERE">
+        <header>Filtrando Dados com WHERE</header>
+        <article>
+            <p>A cláusula WHERE é usada para especificar uma condição que as linhas devem satisfazer para serem incluídas no resultado da consulta. É como dizer: "Dê_me apenas os livros onde o autor é 'George Orwell'".</p>
+            <code>SELECT coluna1, coluna2 FROM NomeDaTabela WHERE condicao;</code>
+            <h5>Operadores Comuns em WHERE:</h5>
+            <ul>
+                <li>=(Igual a)</li>
+                <li>>(Maior que)</li>
+                <li><(Menor que)</li>
+                <li>>=(Maior ou igual a)</li>
+                <li><=(Menor ou Igual a)</li>
+                <li><> ou !(Diferente De)</li>
+                <li>LIKE(Busca por padrão de texto, ex: LIKE 'A%' para textos que começam com 'A')</li>
+                <li>AND, OR, NOT(Operadores lógicos para combinar condições)</li>
+            </ul>
+            <h5>Exemplo Prático (Livros publicados depois de 1900):</h5>
+            <code>SELECT titulo, autor FROM Livros WHERE ano_publicacao > 1900;</code>
+            <h5>Resultado</h5>
+            <table>
+                <tr>
+                    <th>
+                titulo
+                    </th>
+                    <th>autor</th>
+                </tr>
+                <tr>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                </tr>
+                <tr>
+                    <td>O Pequeno Principe</td>
+                    <td>Antoine Saint_Exupéry</td>
+                </tr>
+                <tr>
+                    <td>Dom Casmurro</td>
+                    <td>Machado de Assis</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <section class="main-section" id="Ordenando_Resultados_com_ORDER_BY">
+        <header>Ordenando Resultados com ORDER BY</header>
+        <article>
+            <p>A cláusula ORDER BY é usada para classificar o conjunto de resultados em ordem crescente (ASC, padrão) ou decrescente (DESC) com base em uma ou mais colunas.</p>
+            <code>SELECT coluna1, coluna2 FROM NomeDaTabela ORDER BY coluna_para_ordenar ASC|DESC;</code>
+            <h5>Resultado</h5>
+            <table>
+                <tr>
+                    <th>titulo</th>
+                    <th>ano_publicacao</th>
+                </tr>
+                <tr>
+                    <td>A Odisséia</td>
+                    <td>_1000</td>
+                </tr>
+                <tr>
+                    <td>Dom Casmurro</td>
+                    <td>1899</td>
+                </tr>
+                <tr>
+                    <td>O Pequeno Principe</td>
+                    <td>1943</td>
+                </tr>
+                <tr>
+                    <td>1984</td>
+                    <td>1949</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <section class="main-section" id="Limitando_Resultados_com_LIMIT">
+        <header>Limitando Resultados com LIMIT</header>
+        <article>
+            <p>O comando LIMIT (ou TOP em alguns SGBDRs como SQL Server) é usado para restringir o número de linhas retornadas por uma consulta. É útil quando você precisa apenas de uma amostra dos dados ou dos "top N" resultados.</p>
+            <code>SELECT coluna1, coluna2 FROM NomeDaTabela LIMIT numero_de_linhas;</code>
+            <h5>Exemplo Prático (Os 2 primeiros livros):
+            <code>SELECT * FROM Livros LIMIT 2;</code>
+            <h5>Resultado:</h5>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>titulo</th>
+                    <th>autor</th>
+                    <th>ano_publicacao</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>A Odisséia</td>
+                    <td>Homero</td>
+                    <td>_1000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td>1949</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <section class="main-section" id="INSERT:_Adicionando_Novidades_ao_Banco">
+        <header>INSERT: Adicionando Novidades ao Banco</header>
+        <article>
+            <p>O comando INSERT INTO é usado para adicionar novas linhas (registros) a uma tabela existente no banco de dados.</p>
+            <h5>Sintaxe Básica</h5>
+            <p>Você especifica a tabela, as colunas nas quais deseja inserir dados, e então os valores correspondentes.</p>
+            <code>INSERT INTO NomeDaTabela (coluna1, coluna2, ...) VALUES (valor1, valor2, ...);</code>
+            <p>Se você estiver inserindo valores para todas as colunas da tabela e na ordem correta, a lista de colunas pode ser omitida.</p>
+            <h5>Comando</h5>
+            <code>INSERT INTO Livros (id, titulo, autor, ano_publicacao) VALUES (5, 'Moby Dick', 'Herman Melville', 1851);</code>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>titulo</th>
+                    <th>autor</th>
+                    <th>ano_publicacao</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>A Odisséia</td>
+                    <td>Homero</td>
+                    <td>_1000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td>1949</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>O Pequeno Principe</td>
+                    <td>Antoine de Saint_Exupéry</td>
+                    <td>1943</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Dom Casmurro</td>
+                    <td>Machado de Assis</td>
+                    <td>1899</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Moby Dick</td>
+                    <td>Herman Melville</td>
+                    <td>1851</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <section class="main-section" id="UPDATE:_A_Reforma_dos_Dados">
+        <header> UPDATE: A Reforma dos Dados</header>
+        <article>
+            <p>O comando UPDATE é usado para modificar dados existentes em uma ou mais linhas de uma tabela.</p>
+            <h5>Sintaxe Básica
+                </h5>
+                <p>Você especifica a tabela, a coluna que deseja alterar, o novo valor e (muito importante!) a condição WHERE para determinar quais linhas serão afetadas.</p>
+                <code>UPDATE NomeDaTabela SET coluna1 = novo_valor1, coluna2 = novo_valor2 WHERE condicao;</code>
+                <h4>ATENÇÃO: A Importância do WHERE em UPDATE
+                </h4>
+                <p><b>Cuidado extremo!</b> Se você usar o comando UPDATE sem a cláusula WHERE, todas as linhas da tabela serão atualizadas com o novo valor, o que geralmente não é o que você deseja e pode causar perda irreversível de dados.</p>
+                <h5>Exemplo Prático (Atualizando o ano de publicação de '1984')</h5>
+                <code>UPDATE Livros SET ano_publicacao = 1950 WHERE id = 2;</code>
+                <table>
+                <tr>
+                    <th>id</th>
+                    <th>titulo</th>
+                    <th>autor</th>
+                    <th>ano_publicacao</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>A Odisséia</td>
+                    <td>Homero</td>
+                    <td>_1000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td>1950</td>
+                </tr>
+                </table>
+        </article>
+    </section>
+    <section class="main-section" id="DELETE:_Removendo_Dados">
+        <header>DELETE: Removendo Dados</header>
+        <article>
+            <p>O comando DELETE FROM é usado para remover uma ou mais linhas (registros) de uma tabela.</p>
+            <h5>Sintaxe Básica</h5>
+            <p>Você especifica a tabela e (novamente, muito importante!) a condição WHERE para determinar quais linhas serão removidas.</p>
+            <code>DELETE FROM NomeDaTabela WHERE condicao;
+            </code>
+            <p>ATENÇÃO: A Importância do WHERE em DELETE</p>
+            <p>Extremo Cuidado! Se você usar o comando DELETE FROM sem a cláusula WHERE, todas as linhas da tabela serão excluídas, o que geralmente é um desastre e pode levar à perda total dos seus dados. Sempre use WHERE com DELETE a menos que você realmente queira esvaziar a tabela.</p>
+            <h5>Comando:</h5>
+            <code>DELETE FROM Livros WHERE id = 1;</code>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>titulo</th>
+                    <th>autor</th>
+                    <th>ano_publicacao</th>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td>1950</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>O Pequeno Principe</td>
+                    <td>Antoine de Saint_Exupéry</td>
+                    <td>1943</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Dom Casmurro</td>
+                    <td>Machado de Assis</td>
+                    <td>1899</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Moby Dick</td>
+                    <td>Herman Melville</td>
+                    <td>1851</td>
+                </tr>
+                </table>
+        </article>
+    </section>
+    <section class="main-section" id="Considerações_Finais_e_Boas_Práticas">
+        <header>Considerações Finais e Boas Práticas</header>
+        <article>
+            <p>Dominar os comandos SELECT, INSERT, UPDATE e DELETE é o alicerce para qualquer interação com bancos de dados. À medida que você avança, descobrirá que SQL é uma linguagem poderosa e flexível, capaz de manipular grandes volumes de dados com eficiência.</p>
+            <ul>
+                <li>Sempre Use WHERE (com UPDATE e DELETE): Esta é a regra de ouro para evitar acidentes e perda de dados. Pense duas vezes, execute uma vez.</li>
+                <li>Comentários em SQL: Assim como em outras linguagens, é uma boa prática comentar suas consultas complexas para explicar sua lógica.</li>
+                    <code>__ Este é um comentário de linha única<br>
+                    /* Este é um
+                        comentário de
+                            múltiplas linhas */</code>
+              <li>Nomenclatura Padrão: Mantenha nomes de tabelas e colunas consistentes (ex: snake_case como ano_publicacao) para facilitar a leitura e manutenção do código SQL.</li></ul>
+            <h4>Recursos Adicionais para Aprender Mais</h4>
+            <ul>
+                <li>W3Schools SQL Tutorial: Um excelente recurso online para aprender e praticar SQL interativamente. <a href="https://www.w3schools.com/sql/default.asp" target="_blank">https://www.w3schools.com/sql/default.asp</a></li>
+                <li>Documentação Oficial do SGBDR: Cada sistema de banco de dados (MySQL, PostgreSQL, SQL Server, Oracle) tem sua própria documentação detalhada.</li>
+                <li>Plataformas de Cursos Online: Coursera, Udemy, Alura, e outras oferecem cursos completos sobre SQL e bancos de dados.</li>
+            </ul>
+        </article>
+    </section>
+    </main>
+</body>
+</html>

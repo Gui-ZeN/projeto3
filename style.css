@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+
+:root {
+    --cor1: #F2F2F2;
+    --cor2: #EAE4D5;
+    --cor3: #B6B09F;
+    --cor4: #000000;
+
+    --fonte: "Outfit", sans-serif;
+    --fonte1: "Montserrat", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    min-width: 400px;
+    margin: auto;
+    background-color: var(--cor1);
+       
+}
+
+nav {
+    background-color: var(--cor2);
+    padding: 20px 0 0px 0;
+    color: var(--cor4);
+    width: 300px;
+    flex-shrink: 0;
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    overflow-y: auto;
+    font-family: var(--fonte);
+}
+
+nav header {
+    color: var(--cor4);
+    font-family: var(--fonte);
+    font-weight: light;
+    font-size: 1.9em;
+    text-align: center;
+}
+
+nav ul {
+    display: block;
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+    width: 100%;
+}
+
+nav ul li {
+    border-top: 1px solid var(--cor4);
+}
+nav li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--cor4);
+    font-size: 1.2rem;    
+}
+
+nav li a:hover {
+    background-color: var(--cor4);
+    color: var(--cor2);
+}
+
+main header {
+    font-size: 1.5rem;
+    padding: 15px 0; 
+    font-family: var(--fonte);
+}
+
+main p {
+    font-family: var(--fonte1);
+    text-align: justify;
+    text-indent: 15px;
+    line-height: 1.5rem;
+    width: 95%;
+}
+
+h4 {
+    font-family: var(--fonte);
+}
+
+main ul {
+    width: 95%;
+    line-height: 1.5rem;
+}
+
+code {
+    background-color: var(--cor3);
+    font-size: 0.9rem;
+    display: block;
+    width: 500px;
+    color: var(--cor4);
+    padding: 10px;
+    margin-top: 15px;
+    font-family: var(--fonte);
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid var(--cor4);
+    margin: 15px 0;
+}
+
+td, th {
+    border: 1px solid var(--cor4);
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+    }
+
+    nav {
+        width: 100%; 
+        position: static; 
+        height: 200px; 
+        padding: 15px 0;
+        border-bottom: 2px solid var(--cor3);    
+        max-height: 80vh; 
+        overflow-y: auto; 
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    nav header {
+        font-size: 1.5em; 
+        padding: 0 10px 10px 10px; 
+        margin-bottom: 0; 
+        border-bottom: none; 
+    }
+
+    nav ul {
+        display: block; 
+        width: auto; 
+        padding: 0; 
+        margin: 0; 
+        border-bottom: none; 
+    }
+
+    nav ul li {
+        border-top: 1px solid var(--cor4);
+        width: 100%; 
+        margin: 0; 
+        background-color: transparent; 
+        border-radius: 0; 
+    }
+    nav ul li:first-child {
+        border-top: none;
+    }
+
+    nav li a {
+        padding: 10px 15px;
+        font-size: 1.2rem;
+        color: var(--cor4);
+
+    }
+
+    nav li a:hover {
+        background-color: var(--cor4);
+        color: var(--cor2);
+    }
+
+  
+    main {
+        padding: 20px 15px;
+        width: 100%;
+    }
+
+    main header {
+        font-size: 1.2rem; 
+        padding: 10px 0;
+    }
+
+    main p,
+    main ul {
+        width: 100%;
+    }
+
+    code {
+        width: 100%; 
+        font-size: 0.85rem; 
+    }
+
+    table {
+        font-size: 0.9rem; 
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+main a {
+    color: var(--cor3);
+    text-decoration: none;
+}
+
+main a:hover {
+    color: var(--cor4);
+}
+
+footer {
+    background-color: var(--corterciaria);
+    margin: -20px;
+}
+
+footer > p {
+    color: var(--cordefundo);
+    text-align: center;
+}
+
+footer > p > a {
+    color: rgb(129, 111, 99)
+}
